@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2018-09-29 13:53:46.120314311 UTC
+2018-09-29 14:23:47.162267536 UTC
 
 interface main:Main 8043
-  interface hash: 5e8d9a870455110c91d839ea43846d3c
-  ABI hash: 0893a31cba2b660e0345bdba7e3b81ce
-  export-list hash: 347a2c1521dc5fee9a8b82c840cf116f
+  interface hash: be46817f748a5ad070ce68a2b3275c77
+  ABI hash: 21d627c6aac471c68c9abf6061b3a9df
+  export-list hash: c228526e949bc49c027a3775d8c3cc5b
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 820504806471c1de5d901cf9bb8e420c
   opt_hash: 14e536840aca4e889cad654e6f9b79c1
@@ -14,15 +14,24 @@ interface main:Main 8043
   used TH splices: False
   where
 exports:
+  Main.area
+  Main.atualizaContato
   Main.distanciaEntre
   Main.find
+  Main.formataContato
   Main.main
   Main.moveNaDirecao
+  Main.novoContato
+  Main.safeDiv
+  Main.safeHead
   Main.Associacao
+  Main.Contato{Main.Contato nome telefone}
   Main.Coordenada
   Main.Direcao{Main.Leste Main.Norte Main.Oeste Main.Sul}
+  Main.Forma{Main.Circunferencia Main.Retangulo}
   Main.Ponto{Main.Ponto}
   Main.PontoImprimivel{Main.PontoImprimivel}
+  Main.Talvez{Main.Apenas Main.Nada}
 module dependencies:
 package dependencies: base-4.11.1.0* ghc-prim-0.5.2.0
                       integer-gmp-1.0.2.0
@@ -42,7 +51,70 @@ import  -/  base-4.11.1.0:Prelude 0750c25585e2b797cd78291d423d39dd
 import  -/  base-4.11.1.0:System.IO 1c239be44126f7b1ba512ea61300f4dc
 import  -/  ghc-prim-0.5.2.0:GHC.Classes 122abfcd7450c6c11602933c9ca5f80d
 import  -/  ghc-prim-0.5.2.0:GHC.Types d9b3023de7feae4a5308d643da5543f7
-d4e08ba0c682a7e6779f8afae310693f
+41d034492715f83c360cb11cda73b904
+  $fShowContato :: GHC.Show.Show Main.Contato
+  DFunId
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Main.Contato
+                  Main.$fShowContato_$cshowsPrec
+                  Main.$fShowContato_$cshow
+                  Main.$fShowContato_$cshowList -}
+41d034492715f83c360cb11cda73b904
+  $fShowContato1 :: Main.Contato -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U(1*U,1*U)><L,U>,
+     Unfolding: (\ (w :: Main.Contato) (w1 :: GHC.Base.String) ->
+                 case w of ww { Main.Contato ww1 ww2 ->
+                 Main.$w$cshowsPrec 0# ww1 ww2 w1 }) -}
+89c0dd4d68827c3958d5ceae7dbb5472
+  $fShowContato2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("}"#) -}
+a2773d881d4f4149b51b209867fb4571
+  $fShowContato3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("telefone = "#) -}
+e27a53a98cb76f67fb1b40a8c8675f58
+  $fShowContato4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("nome = "#) -}
+06c712f1785e5b1d7af6a0de277a97df
+  $fShowContato5 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Contato {"#) -}
+a68fad9770a7e07a642afe3c0c6aeae0
+  $fShowContato6 :: [GHC.Types.Char]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   GHC.Show.$fShow(,)3
+                   Main.$fShowContato7) -}
+68bc42ae979cf60a519a7dd38f58f455
+  $fShowContato7 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackAppendCString#
+                   Main.$fShowContato2
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+41d034492715f83c360cb11cda73b904
+  $fShowContato_$cshow :: Main.Contato -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U(1*U,1*U)>, Inline: [0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Main.Contato) ->
+                 case w of ww { Main.Contato ww1 ww2 -> Main.$w$cshow ww1 ww2 }) -}
+41d034492715f83c360cb11cda73b904
+  $fShowContato_$cshowList :: [Main.Contato] -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ls :: [Main.Contato]) (s :: GHC.Base.String) ->
+                 GHC.Show.showList__ @ Main.Contato Main.$fShowContato1 ls s) -}
+41d034492715f83c360cb11cda73b904
+  $fShowContato_$cshowsPrec ::
+    GHC.Types.Int -> Main.Contato -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U(1*U,1*U)><L,U>,
+     Inline: [0],
+     Unfolding: InlineRule (3, True, False)
+                (\ (w :: GHC.Types.Int)
+                   (w1 :: Main.Contato)
+                   (w2 :: GHC.Base.String) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case w1 of ww2 { Main.Contato ww3 ww4 ->
+                 Main.$w$cshowsPrec ww1 ww3 ww4 w2 } }) -}
+2c1a884d15292af4ee1bf358a46bfbfc
   $fShowPontoImprimivel :: GHC.Show.Show Main.PontoImprimivel
   DFunId
   {- Strictness: m, Inline: CONLIKE,
@@ -51,12 +123,12 @@ d4e08ba0c682a7e6779f8afae310693f
                   Main.$fShowPontoImprimivel_$cshowsPrec
                   Main.$fShowPontoImprimivel_$cshow
                   Main.$fShowPontoImprimivel_$cshowList -}
-d4e08ba0c682a7e6779f8afae310693f
+2c1a884d15292af4ee1bf358a46bfbfc
   $fShowPontoImprimivel1 :: Main.PontoImprimivel -> GHC.Show.ShowS
   {- Arity: 1, Strictness: <S,1*U(1*U(U),1*U(U))>,
      Unfolding: (\ (w :: Main.PontoImprimivel) ->
                  case w of ww { Main.PontoImprimivel ww1 ww2 ->
-                 Main.$w$cshowsPrec 0# ww1 ww2 }) -}
+                 Main.$w$cshowsPrec1 0# ww1 ww2 }) -}
 9b6923d9fe00e0f7f8a10ba1f428aabe
   $fShowPontoImprimivel2 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("PontoImprimivel "#) -}
@@ -66,7 +138,7 @@ d4e08ba0c682a7e6779f8afae310693f
 10641febfd34cf20ef13c8c107c40e97
   $fShowPontoImprimivel4 :: GHC.Types.Int
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0#) -}
-d4e08ba0c682a7e6779f8afae310693f
+2c1a884d15292af4ee1bf358a46bfbfc
   $fShowPontoImprimivel_$cshow ::
     Main.PontoImprimivel -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U(1*U(U),1*U(U))>,
@@ -76,7 +148,7 @@ d4e08ba0c682a7e6779f8afae310693f
                    Main.$fShowPontoImprimivel4
                    x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-d4e08ba0c682a7e6779f8afae310693f
+2c1a884d15292af4ee1bf358a46bfbfc
   $fShowPontoImprimivel_$cshowList ::
     [Main.PontoImprimivel] -> GHC.Show.ShowS
   {- Arity: 2, Strictness: <S,1*U><L,U>,
@@ -87,7 +159,7 @@ d4e08ba0c682a7e6779f8afae310693f
                    Main.$fShowPontoImprimivel1
                    ls
                    s) -}
-d4e08ba0c682a7e6779f8afae310693f
+2c1a884d15292af4ee1bf358a46bfbfc
   $fShowPontoImprimivel_$cshowsPrec ::
     GHC.Types.Int -> Main.PontoImprimivel -> GHC.Show.ShowS
   {- Arity: 2, Strictness: <S(S),1*U(U)><S,1*U(1*U(U),1*U(U))>,
@@ -96,7 +168,67 @@ d4e08ba0c682a7e6779f8afae310693f
                 (\ (w :: GHC.Types.Int) (w1 :: Main.PontoImprimivel) ->
                  case w of ww { GHC.Types.I# ww1 ->
                  case w1 of ww2 { Main.PontoImprimivel ww3 ww4 ->
-                 Main.$w$cshowsPrec ww1 ww3 ww4 } }) -}
+                 Main.$w$cshowsPrec1 ww1 ww3 ww4 } }) -}
+9d145f775be500f85cc001bcdb4c944d
+  $tc'Apenas :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   12223326838147639200##
+                   15000876958975465755##
+                   Main.$trModule
+                   Main.$tc'Apenas2
+                   1#
+                   Main.$tc'Apenas1) -}
+62dbcd3d384117bb230c64bc69c80cf2
+  $tc'Apenas1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+9d6481e22844e9bc34a2246cc467d393
+  $tc'Apenas2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Main.$tc'Apenas3) -}
+621fe6ef7db2a88d947d18d1c19087c3
+  $tc'Apenas3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'Apenas"#) -}
+87f79ace2e6ff01bfcc364533724292a
+  $tc'Circunferencia :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   6874551665274702977##
+                   13904731071870499445##
+                   Main.$trModule
+                   Main.$tc'Circunferencia2
+                   0#
+                   Main.$tc'Circunferencia1) -}
+4cb0e37a5ae935e06cb15dcdfd37d7fc
+  $tc'Circunferencia1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+a554230361865e4977d6aa1ec890b3e8
+  $tc'Circunferencia2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Main.$tc'Circunferencia3) -}
+a93b2ef2c2d0414d8eed881a3122f574
+  $tc'Circunferencia3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'Circunferencia"#) -}
+05c9aee22afc649bb6a23feb405dce97
+  $tc'Contato :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   12158919195184504265##
+                   15845770763029237653##
+                   Main.$trModule
+                   Main.$tc'Contato2
+                   0#
+                   Main.$tc'Contato1) -}
+a5f33e887d5ca61726d3f7d137979d89
+  $tc'Contato1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+8341dd0d25d2634fddd0962d481f775a
+  $tc'Contato2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Main.$tc'Contato3) -}
+98cf68196e360d117cd8e8f93992f639
+  $tc'Contato3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'Contato"#) -}
 95f825fa3a79bb2de6d4d2f6b1c77607
   $tc'Leste :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
@@ -117,6 +249,26 @@ d4e08ba0c682a7e6779f8afae310693f
 87aaf13fc013c098cb90ab19b5ce9666
   $tc'Leste3 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("'Leste"#) -}
+5e9c0e79863826f88c3f46a4bb810717
+  $tc'Nada :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   17499030812836774634##
+                   16690056909217107473##
+                   Main.$trModule
+                   Main.$tc'Nada2
+                   1#
+                   Main.$tc'Nada1) -}
+66057343eccb018ad58e75197bfe2f2a
+  $tc'Nada1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m1, Inline: [~] -}
+5c844f14d23adb10a86d80732a1398b1
+  $tc'Nada2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Main.$tc'Nada3) -}
+79fbf96086db7dd75cfec6d4e010214b
+  $tc'Nada3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'Nada"#) -}
 9bca28b8804ddc7a0d76b72efc57187a
   $tc'Norte :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
@@ -191,6 +343,26 @@ d6589d7c65a965d50edec33600fbab48
 91452f9be4db3381c939a1737b22dd8b
   $tc'PontoImprimivel3 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("'PontoImprimivel"#) -}
+1b401235f6ca568076ad812ffedbf9bd
+  $tc'Retangulo :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2741697808851250015##
+                   724238356924095919##
+                   Main.$trModule
+                   Main.$tc'Retangulo2
+                   0#
+                   Main.$tc'Retangulo1) -}
+7bf90e1f7ce5d52611d38815fb3c9164
+  $tc'Retangulo1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+39f5b689df9c9b6db5532173f661c209
+  $tc'Retangulo2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Main.$tc'Retangulo3) -}
+c87ccf0c7e09e4b2b1d7768b9f8e5de0
+  $tc'Retangulo3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'Retangulo"#) -}
 13123f376dc5959b5aee1ae97d0da88e
   $tc'Sul :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
@@ -208,6 +380,23 @@ d6589d7c65a965d50edec33600fbab48
 1d3738e26fcd80ca000421f94e186f24
   $tc'Sul2 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("'Sul"#) -}
+6987f056a5f98b3e9461fc37d6578353
+  $tcContato :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   7476670118464707250##
+                   10380355637204375777##
+                   Main.$trModule
+                   Main.$tcContato1
+                   0#
+                   GHC.Types.krep$*) -}
+8691e2d9cae5de030b72b23897b8c77d
+  $tcContato1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Main.$tcContato2) -}
+580d4881ac0cd5ed23d07794c462bbaf
+  $tcContato2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Contato"#) -}
 15a359f4cbe2ad4131315486fe2bb263
   $tcDirecao :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
@@ -225,6 +414,23 @@ d6589d7c65a965d50edec33600fbab48
 6a210662fa41ba27f419add572cd615f
   $tcDirecao2 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("Direcao"#) -}
+67879c9d70947b99763352ac512bcef6
+  $tcForma :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   7379159473364090804##
+                   5118347212186616494##
+                   Main.$trModule
+                   Main.$tcForma1
+                   0#
+                   GHC.Types.krep$*) -}
+c15d4e37defbfaa4f0dcf09e5c7304e8
+  $tcForma1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Main.$tcForma2) -}
+66c32479ad71c7f6d51a4d18ab96baa7
+  $tcForma2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Forma"#) -}
 0e6adbd142ff62d7ce1394d48dc4f7f6
   $tcPonto :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
@@ -259,6 +465,23 @@ d6589d7c65a965d50edec33600fbab48
 2fba69b81ff3639bad86807a1f976526
   $tcPontoImprimivel2 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("PontoImprimivel"#) -}
+82a6ff2af08c5e67ddb1d27fe6c893f0
+  $tcTalvez :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   14165649163313625750##
+                   12714475856573725044##
+                   Main.$trModule
+                   Main.$tcTalvez1
+                   0#
+                   GHC.Types.krep$*Arr*) -}
+325d43562dfc395435cd49b3bd2f660d
+  $tcTalvez1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Main.$tcTalvez2) -}
+8b932903c22ad6abfc99961f20d5ea14
+  $tcTalvez2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Talvez"#) -}
 be86c9d078d3acbf19ba91fe74a24273
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
@@ -277,8 +500,84 @@ e5875966b74dad2d29772660b8a75e33
 d026be77cb9ced20e35a61514e0458aa
   $trModule4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("main"#) -}
-8cbf96df61df3434ad782e7507070893
+bd070dd916be18050d6335df6b82150a
+  $w$cshow :: GHC.Base.String -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 2, Strictness: <L,1*U><L,1*U>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Base.String) (ww1 :: GHC.Base.String) ->
+                 GHC.CString.unpackAppendCString#
+                   Main.$fShowContato5
+                   (GHC.CString.unpackAppendCString#
+                      Main.$fShowContato4
+                      (GHC.Types.:
+                         @ GHC.Types.Char
+                         GHC.Show.$fShow(,)3
+                         (GHC.Show.showLitString
+                            ww
+                            (GHC.Types.:
+                               @ GHC.Types.Char
+                               GHC.Show.$fShow(,)3
+                               (GHC.Base.++
+                                  @ GHC.Types.Char
+                                  GHC.Show.showCommaSpace1
+                                  (GHC.CString.unpackAppendCString#
+                                     Main.$fShowContato3
+                                     (GHC.Types.:
+                                        @ GHC.Types.Char
+                                        GHC.Show.$fShow(,)3
+                                        (GHC.Show.showLitString ww1 Main.$fShowContato6))))))))) -}
+3072b4a905b03b0695176d83336bc91f
   $w$cshowsPrec ::
+    GHC.Prim.Int#
+    -> GHC.Base.String
+    -> GHC.Base.String
+    -> GHC.Base.String
+    -> GHC.Base.String
+  {- Arity: 4, Strictness: <S,U><L,1*U><L,1*U><L,U>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Int#)
+                   (ww1 :: GHC.Base.String)
+                   (ww2 :: GHC.Base.String)
+                   (w :: GHC.Base.String) ->
+                 let {
+                   p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,U> -}
+                   = \ (x :: GHC.Base.String)[OneShot] ->
+                     GHC.CString.unpackAppendCString#
+                       Main.$fShowContato5
+                       (GHC.CString.unpackAppendCString#
+                          Main.$fShowContato4
+                          (GHC.Types.:
+                             @ GHC.Types.Char
+                             GHC.Show.$fShow(,)3
+                             (GHC.Show.showLitString
+                                ww1
+                                (GHC.Types.:
+                                   @ GHC.Types.Char
+                                   GHC.Show.$fShow(,)3
+                                   (GHC.Base.++
+                                      @ GHC.Types.Char
+                                      GHC.Show.showCommaSpace1
+                                      (GHC.CString.unpackAppendCString#
+                                         Main.$fShowContato3
+                                         (GHC.Types.:
+                                            @ GHC.Types.Char
+                                            GHC.Show.$fShow(,)3
+                                            (GHC.Show.showLitString
+                                               ww2
+                                               (GHC.Types.:
+                                                  @ GHC.Types.Char
+                                                  GHC.Show.$fShow(,)3
+                                                  (GHC.CString.unpackAppendCString#
+                                                     Main.$fShowContato2
+                                                     x))))))))))
+                 } in
+                 case GHC.Prim.>=# ww 11# of lwild {
+                   DEFAULT -> p w
+                   1#
+                   -> GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.$fShow(,)4
+                        (p (GHC.Types.: @ GHC.Types.Char GHC.Show.$fShow(,)2 w)) }) -}
+b56710beda99b8c1435b9b7520e812fe
+  $w$cshowsPrec1 ::
     GHC.Prim.Int#
     -> GHC.Types.Double -> GHC.Types.Double -> GHC.Show.ShowS
   {- Arity: 3, Strictness: <S,U><L,1*U(U)><L,1*U(U)>, Inline: [0],
@@ -318,17 +617,75 @@ d026be77cb9ced20e35a61514e0458aa
                                  @ GHC.Types.Char
                                  GHC.Show.showSpace1
                                  (g (GHC.Types.: @ GHC.Types.Char GHC.Show.$fShow(,)2 x))))) }) -}
+4441755fdf53736edc7d4aa0fac8a53e
+  $wformataContato ::
+    GHC.Base.String -> GHC.Base.String -> [GHC.Types.Char]
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Base.String) (ww1 :: GHC.Base.String) ->
+                 GHC.Base.++
+                   @ GHC.Types.Char
+                   ww
+                   (GHC.CString.unpackAppendCString# Main.formataContato1 ww1)) -}
+d90f977b271ffa17d6b33d9928509dab
+  $wsafeDiv ::
+    GHC.Types.Int -> GHC.Prim.Int# -> Main.Talvez GHC.Types.Int
+  {- Arity: 2, Strictness: <L,1*U(U)><S,1*U>, Inline: [0],
+     Unfolding: (\ (w :: GHC.Types.Int) (ww :: GHC.Prim.Int#) ->
+                 case ww of ds {
+                   DEFAULT
+                   -> Main.Apenas
+                        @ GHC.Types.Int
+                        (case w of ww1 { GHC.Types.I# ww2 ->
+                         case ds of wild {
+                           DEFAULT
+                           -> case GHC.Classes.divInt# ww2 wild of ww4 { DEFAULT ->
+                              GHC.Types.I# ww4 }
+                           -1#
+                           -> case ww2 of wild1 {
+                                DEFAULT
+                                -> case GHC.Classes.divInt# wild1 -1# of ww4 { DEFAULT ->
+                                   GHC.Types.I# ww4 }
+                                -9223372036854775808#
+                                -> case GHC.Real.overflowError ret_ty GHC.Types.Int of {} } } })
+                   0# -> Main.Nada @ GHC.Types.Int }) -}
 d288ccb45cdaba4b9c8bec3b0e5c6bba
   type Associacao k v = [(k, v)]
+41d034492715f83c360cb11cda73b904
+  data Contato
+    = Contato {nome :: GHC.Base.String, telefone :: GHC.Base.String}
 15133eee972662c8a02f335c7c964392
   type Coordenada = (GHC.Types.Int, GHC.Types.Int)
 f2556cea475436393627ee05f482d3cb
   data Direcao = Norte | Sul | Leste | Oeste
+d3c2589b688faeb39738044f23f3b20e
+  data Forma
+    = Circunferencia Main.Ponto GHC.Types.Double
+    | Retangulo Main.Ponto GHC.Types.Double GHC.Types.Double
 3070c9708f6abbd6d11b64f5246a9991
   data Ponto = Ponto GHC.Types.Double GHC.Types.Double
-d4e08ba0c682a7e6779f8afae310693f
+2c1a884d15292af4ee1bf358a46bfbfc
   data PontoImprimivel
     = PontoImprimivel GHC.Types.Double GHC.Types.Double
+e2f23a441a7672dd6ee1455f1cf993d8
+  data Talvez a = Nada | Apenas a
+c637ca5746611de567cf55ee8fd348f3
+  area :: Main.Forma -> GHC.Types.Double
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Main.Forma) ->
+                 case ds of wild {
+                   Main.Circunferencia posicao raio
+                   -> case raio of wild1 { GHC.Types.D# x ->
+                      GHC.Types.D#
+                        (GHC.Prim.*## 3.141592653589793## (GHC.Prim.*## x x)) }
+                   Main.Retangulo posicao largura altura
+                   -> GHC.Float.timesDouble largura altura }) -}
+2325a2503c039ec96fef272257c2f957
+  atualizaContato :: Main.Contato -> GHC.Base.String -> Main.Contato
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U(U,A)><L,U>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ (c :: Main.Contato) (t :: GHC.Base.String) ->
+                 case c of wild { Main.Contato ds ds1 -> Main.Contato ds t }) -}
 4f622cbf3a8dc43536a29828085b0a76
   distanciaEntre :: Main.Ponto -> Main.Ponto -> GHC.Types.Double
   {- Arity: 2, HasNoCafRefs,
@@ -372,6 +729,17 @@ d4e08ba0c682a7e6779f8afae310693f
                             GHC.Types.False -> go ys GHC.Types.True -> v1 } } }
                  } in
                  go dicionario) -}
+15957f36595d71295bde73b32aea94f5
+  formataContato :: Main.Contato -> GHC.Base.String
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U,U)>,
+     Inline: [0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Main.Contato) ->
+                 case w of ww { Main.Contato ww1 ww2 ->
+                 Main.$wformataContato ww1 ww2 }) -}
+d726bc0726eb6fb09c18714f9ec17ec7
+  formataContato1 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: (" - "#) -}
 019340907f962cdf9f4efc1a5dcf40a4
   main :: GHC.Types.IO ()
   {- Arity: 1,
@@ -424,6 +792,49 @@ a27c86682396455da18559277aeeb5d1
                    -> (case ww1 of wild1 { GHC.Types.I# x ->
                        GHC.Types.I# (GHC.Prim.-# x 1#) },
                        ww2) } }) -}
+41d034492715f83c360cb11cda73b904
+  nome :: Main.Contato -> GHC.Base.String
+  RecSel Left Main.Contato
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Main.Contato) ->
+                 case ds of wild { Main.Contato ds1 ds2 -> ds1 }) -}
+63a25af6531860b83ef4a1d62e93fca0
+  novoContato :: Main.Contato
+  {- Strictness: m,
+     Unfolding: (Main.Contato Main.novoContato3 Main.novoContato1) -}
+c10908edb02690df18b0a26490a71354
+  novoContato1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Main.novoContato2) -}
+f6cfd654fc9fe58f9fd04eddd7201a05
+  novoContato2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("9990-9990"#) -}
+79d2a638469ab8813e48c1bc0f05caa7
+  novoContato3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Main.novoContato4) -}
+731c3d12c43bb8a861f3ef17c5b97cee
+  novoContato4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Maria"#) -}
+c977cff37f44f11bf51ba04e87a62e35
+  safeDiv ::
+    GHC.Types.Int -> GHC.Types.Int -> Main.Talvez GHC.Types.Int
+  {- Arity: 2, Strictness: <L,1*U(U)><S(S),1*U(1*U)>, Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: GHC.Types.Int) (w1 :: GHC.Types.Int) ->
+                 case w1 of ww { GHC.Types.I# ww1 -> Main.$wsafeDiv w ww1 }) -}
+3c0bc0825335553b2e32c68ac23b8d7b
+  safeHead :: [a] -> Main.Talvez a
+  {- Arity: 1, Strictness: <L,1*U>m2,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ a (xs :: [a]) -> Main.Apenas @ a (GHC.List.head @ a xs)) -}
+41d034492715f83c360cb11cda73b904
+  telefone :: Main.Contato -> GHC.Base.String
+  RecSel Left Main.Contato
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Main.Contato) ->
+                 case ds of wild { Main.Contato ds1 ds2 -> ds2 }) -}
+instance [safe] GHC.Show.Show [Main.Contato] = Main.$fShowContato
 instance [safe] GHC.Show.Show [Main.PontoImprimivel]
   = Main.$fShowPontoImprimivel
 vectorised variables:

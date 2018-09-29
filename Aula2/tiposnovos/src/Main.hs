@@ -52,6 +52,31 @@ atualizaContato c t = c {telefone = t}
 formataContato:: Contato -> String
 formataContato c  = (nome c) ++ " - " ++ (telefone c)
 
+-- Tipo parametrizado
+data Talvez a = Nada | Apenas a
+-- talvez a divisao retorne um Int
+safeDiv:: Int -> Int ->Talvez Int
+safeDiv _ 0 = Nada
+safeDiv m n = Apenas (m `div` n)
+
+safeHead :: [a] -> Talvez a
+safeHead xs = Apenas (head xs)
+
+divComErro :: Int->Int -> Int
+divComErro m n = case (safeDiv m n ) of
+                                    Nada -> error "divisao por 0"
+                                    Apenas x -> x
+
+-- NEWTYPE faz um sinonimo que é reconhecido como novo tipo
+newtype MinhaString = S [char]
+
+-- funcoes que aceitem MinhaString não aceitaram strings, mesmo que [char] === string.
+
+
+
+
+
+
 main :: IO ()
 main = do
   putStrLn "hello world"
