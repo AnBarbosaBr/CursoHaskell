@@ -77,7 +77,8 @@ newtype MinhaString = S [char]
 -- TIPOS RECURSIVOS
 data Tree a = Leaf a | Node (Tree a) a ( Tree a)
 contem :: Eq a => Tree a -> a -> Bool
-contem (Leaf y) x = x == y2contem (Node l y r) x = x == y || l `contem` x || r `contem` x
+contem (Leaf y) x = x == y2
+contem (Node l y r) x = x == y || l `contem` x || r `contem` x
 
 -- CLASSESE DE TIPO
 
